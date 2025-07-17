@@ -1,2 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Chewy:regular);
 @import "tailwindcss";
 
+
+:root {
+  --eggplant: rgba(84, 59, 77, 0.95);
+  --magenta-haze: rgb(164, 81, 124);
+  --hot-pink: rgba(245, 102, 171, 0.5);
+  --tickle-me-pink: rgb(248, 135, 180);
+  --amaranth-pink: rgb(250, 163, 188);
+  --tea-rose-red: rgb(250, 196, 194);
+  --champagne: rgb(250, 227, 199);
+
+  --chewy-font: "Chewy", cursive;
+}
+
+body {
+    font-family: var(--chewy-font);
+}
+
+.lp-bg {
+  background-color: var(--magenta-haze);
+  color: var(--champagne);
+}
+
+h1.split {
+  font-size: clamp(2rem,25vw,16rem);
+  white-space: nowrap;
+  line-height: 1;
+}

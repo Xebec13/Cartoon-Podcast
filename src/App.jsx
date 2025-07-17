@@ -1,11 +1,14 @@
+import LandingPage from "./LandingPage";
+import Spacer from "./Spacer"
+
+
 function App() {
-  
-
   return (
-    <div className=''>
-
-    </div>
-  )
+    <>
+      <LandingPage />
+      <Spacer/>
+    </>
+  );
 }
 
-export default App
+export default App;

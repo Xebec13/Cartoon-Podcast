@@ -7,33 +7,33 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 const LandingPage = () => {
-  const box = useRef(null);
+  const landingContainerRef = useRef(null);
   const split = useRef(null);
 
   useGSAP(() => {
     const animate = () => {
-      split.current = SplitText.create(box.current, {
+      split.current = SplitText.create(landingContainerRef.current, {
         type: "chars",
         charsClass: "split-char",
       });
 
       gsap.from(split.current.chars, {
-        duration: 1.4,
+        duration: 1.2,
         yPercent: "random([-150,150])",
         xPercent: "random([-150,150])",
         stagger: {
           from: "random",
-          amount: 2.5,
+          amount: 2.7,
         },
         opacity: 0,
         ease: "power3.out",
       });
 
-      gsap.to(box.current, {
+      gsap.to(landingContainerRef.current, {
         scrollTrigger: {
-          trigger: box.current,
+          trigger: landingContainerRef.current,
           start: "top top",
-          end: "+=150vh",
+          end: "+=250vh",
           scrub: true,
         },
         scale: 0.1,
@@ -51,15 +51,17 @@ const LandingPage = () => {
 
     return () => {
       split.current && split.current.revert();
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
-
+  // DODAC TIMELINE W PRZYSZLOSCI DO SYNCHRONIZACJI
   return (
-    <div className="lp-bg h-[100vh] flex justify-center items-start">
-      <div ref={box} className="text-center p-10">
+    <div className="lp-bg h-[100vh] p-10 flex justify-center">
+      <div ref={landingContainerRef} className="text-center">
         <h1 className="split" style={{ opacity: 1 }}>
-          Cartoon<br />Podcast
+          Cartoon
+          <br />
+          Podcast
         </h1>
       </div>
     </div>

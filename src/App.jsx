@@ -1,5 +1,6 @@
 import LandingPage from "./LandingPage";
 import Spacer from "./Spacer"
+import HeroSection from "./HeroSection"
 
 
 function App() {
@@ -7,6 +8,9 @@ function App() {
     <>
       <LandingPage />
       <Spacer/>
+      <HeroSection />
+      <Spacer/>
+     
     </>
   );
 }

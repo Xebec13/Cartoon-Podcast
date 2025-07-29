@@ -3,6 +3,7 @@ import Spacer from "./Spacer"
 import Nav from "./Nav"
 import HeroSection from "./HeroSection"
 import MinorHeroSection from "./MinorHeroSection"
+import Episodes from "./Episodes"
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Nav/>
       <HeroSection />
      <MinorHeroSection/>
+     <Episodes/>
     </>
   );
 }

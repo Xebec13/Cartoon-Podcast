@@ -1,83 +1,98 @@
 import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-const words = ["forgettable", "filtered", "scripted"];
-
-const typeDelete = (
-  el,
-  word,
-  typeSpeed = 0.2,
-  deleteSpeed = 0.15,
-  pause = 0.7
-) => {
-  const tl = gsap.timeline();
-
-  // Typowanie liter
-  for (let i = 1; i <= word.length; i++) {
-    tl.call(
-      () => {
-        if (el) el.textContent = word.slice(0, i);
-      },
-      null,
-      "+=" + typeSpeed
-    );
-  }
-
-  // Pauza po wpisaniu słowa
-  tl.to({}, { duration: pause });
-
-  // Usuwanie liter
-  for (let i = word.length; i >= 0; i--) {
-    tl.call(
-      () => {
-        if (el) el.textContent = word.slice(0, i);
-      },
-      null,
-      "+=" + deleteSpeed
-    );
-  }
-
-  // Pauza po usunięciu słowa
-  tl.to({}, { duration: pause });
-
-  return tl;
-};
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const HeroSection = () => {
-  const spanRef = useRef(null);
-  const heroContainerRef = useRef(null);
+  const sectionContainerRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useGSAP(() => {
-    if (!spanRef.current) return;
+    if (
+      !sectionContainerRef.current ||
+      !textContainerRef.current ||
+      !buttonRef.current
+    )
+      return;
 
-    const master = gsap.timeline({ repeat: -1 });
+    const animate = () => {
+      const split = SplitText.create(textContainerRef.current, {
+        type: "chars,words",
+      });
 
-    words.forEach((word) => {
-      master.add(typeDelete(spanRef.current, word, 0.15, 0.1, 0.5));
-    });
+      gsap.set(textContainerRef.current, { opacity: 1, y: 0 });
+      gsap.set(buttonRef.current, { opacity: 1, y: 0 });
 
-    
-    return () => master.kill();
-  }, []);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionContainerRef.current,
+          start: "top center",
+          end: "+=50%",
+          scrub: 1,
+          // markers: true,
+        },
+      });
+
+      tl.from(split.chars, {
+        y: 20,
+        autoAlpha: 0,
+        stagger: 0.05,
+        duration: 0.4,
+        ease: "power4.out",
+      });
+
+      tl.from(
+        buttonRef.current,
+        {
+          y: 40,
+          autoAlpha: 0,
+          duration: 1,
+          ease: "power4.out",
+        },
+        "-=0.3"
+      );
+
+      return () => {
+        split.revert();
+        tl.kill();
+      };
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      return document.fonts.ready.then(animate);
+    } else {
+      return animate();
+    }
+  }, [sectionContainerRef, textContainerRef, buttonRef]);
 
   return (
-    <div ref={heroContainerRef} className="lp-bg h-[100vh] border-2 p-5 flex flex-col text-center">
-      <div  className="test1 text-[5rem]">
-        <p>Your daily dose of animation</p>
+    <section
+      ref={sectionContainerRef}
+      className="h-[100vh] p-5 tickle-me-pink-opacity80 bg text-[2.5rem]  md:text-[4rem] text-center flex flex-col items-center justify-center gap-10"
+    >
+      <div
+        ref={textContainerRef}
+        className="h-auto whitespace-pre-line"
+        style={{ opacity: 0 }}
+      >
         <p>
-          Un<span ref={spanRef}></span>
+          Cartoon Podcast is where every frame tells a story that sparks your
+          imagination and brings your favorite characters to life. Tune in and
+          let the adventure begin!
         </p>
       </div>
-      <div className="test2">
-        Cartoon Podcast is where every frame tells a story that sparks your
-        imagination and brings your favorite characters to life. Tune in and let
-        the adventure begin!
-      </div>
-    </div>
+      <button
+        ref={buttonRef}
+        className=" bg-indigo-600 text-white rounded"
+        style={{ opacity: 0 }}
+      >
+        Click Me
+      </button>
+    </section>
   );
 };
 

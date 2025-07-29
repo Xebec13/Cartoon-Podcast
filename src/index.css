@@ -1,22 +1,117 @@
 @import url(https://fonts.googleapis.com/css?family=Chewy:regular);
 @import "tailwindcss";
 
-
 :root {
-  --eggplant: rgba(84, 59, 77, 0.95);
+  --eggplant: #543b4df2;
   --magenta-haze: rgb(164, 81, 124);
   --hot-pink: rgba(245, 102, 171, 0.5);
   --tickle-me-pink: rgb(248, 135, 180);
-  --amaranth-pink: rgb(250, 163, 188);
-  --tea-rose-red: rgb(250, 196, 194);
   --champagne: rgb(250, 227, 199);
 
   --chewy-font: "Chewy", cursive;
 }
+.eggplant {
+  background-color: #543b4d;
+}
 
+.eggplant-opacity80 {
+  background-color: rgba(84, 59, 77, 0.8);
+}
+.eggplant-opacity60 {
+  background-color: rgba(84, 59, 77, 0.6);
+}
+.eggplant-opacity40 {
+  background-color: rgba(84, 59, 77, 0.4);
+}
+.eggplant-opacity20 {
+  background-color: rgba(84, 59, 77, 0.2);
+}
+
+.magenta-haze {
+  background-color: #a4517c;
+}
+
+.magenta-haze-opacity80 {
+  background-color: rgba(164, 81, 124, 0.8);
+}
+.magenta-haze-opacity60 {
+  background-color: rgba(164, 81, 124, 0.6);
+}
+.magenta-haze-opacity40 {
+  background-color: rgba(164, 81, 124, 0.4);
+}
+.magenta-haze-opacity20 {
+  background-color: rgba(164, 81, 124, 0.2);
+}
+
+.hot-pink {
+  background-color: #f566ab;
+}
+.hot-pink-opacity80 {
+  background-color: rgba(245, 102, 171, 0.8);
+}
+.hot-pink-opacity60 {
+  background-color: rgba(245, 102, 171, 0.6);
+}
+.hot-pink-opacity40 {
+  background-color: rgba(245, 102, 171, 0.4);
+}
+.hot-pink-opacity20 {
+  background-color: rgba(245, 102, 171, 0.2);
+}
+
+.tickle-me-pink {
+  background-color: #f887b4;
+}
+.tickle-me-pink-opacity80 {
+  background-color: rgba(248, 135, 180, 0.8);
+}
+.tickle-me-pink-opacity60 {
+  background-color: rgba(248, 135, 180, 0.6);
+}
+.tickle-me-pink-opacity40 {
+  background-color: rgba(248, 135, 180, 0.4);
+}
+.tickle-me-pink-opacity20 {
+  background-color: rgba(248, 135, 180, 0.2);
+}
+
+.champagne {
+  background-color: #fae3c7;
+}
+.champagne-opacity80 {
+  background-color: rgba(250, 227, 199, 0.8);
+}
+.champagne-opacity60 {
+  background-color: rgba(250, 227, 199, 0.6);
+}
+.champagne-opacity40 {
+  background-color: rgba(250, 227, 199, 0.4);
+}
+.champagne-opacity20 {
+  background-color: rgba(250, 227, 199, 0.2);
+}
+.eggplant-text {
+  color: #543b4d;
+}
+
+.magenta-haze-text {
+  color: #a4517c;
+}
+
+.hot-pink-text {
+  color: #f566ab;
+}
+
+.tickle-me-pink-text {
+  color: #f887b4;
+}
+
+.champagne-text {
+  color: #fae3c7;
+}
 body {
-    font-family: var(--chewy-font);
-    line-height: 1;
+  font-family: var(--chewy-font);
 }
 
 .lp-bg {
@@ -25,7 +120,7 @@ body {
 }
 
 h1.split {
-  font-size: clamp(2rem,25vw,16rem);
+  font-size: clamp(2rem, 25vw, 16rem);
   white-space: nowrap;
   line-height: 1;
 }

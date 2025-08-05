@@ -4,6 +4,7 @@ import Nav from "./Nav"
 import HeroSection from "./HeroSection"
 import MinorHeroSection from "./MinorHeroSection"
 import Episodes from "./Episodes"
+import AboutMe from "./AboutMe.jsx"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <HeroSection />
      <MinorHeroSection/>
      <Episodes/>
+     <AboutMe/>
     </>
   );
 }

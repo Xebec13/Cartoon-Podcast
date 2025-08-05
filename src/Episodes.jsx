@@ -1,4 +1,3 @@
-import React from "react";
 import epImage1 from "./assets/cartoon-podcast-episode-1.jpg";
 import epImage2 from "./assets/cartoon-podcast-episode-2.jpg";
 import epImage3 from "./assets/cartoon-podcast-episode-3.jpg";
@@ -20,7 +19,7 @@ const episodeImages = [
 
 const Episodes = () => {
   return (
-    <section className="h-screen p-10 flex flex-col justify-center items-center">
+    <section className="h-screen p-10 tickle-me-pink-opacity60 eggplant-text flex flex-col justify-center items-center">
       <div className="text-[5rem] self-start">
         <p>Latest Episodes</p>
       </div>
